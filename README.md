@@ -1,19 +1,21 @@
 
-# **Silver Weapons Library**
-This library allows for easy and efficient checking for equipment.
-Equiping and swapping armor, mainhand- and offhand items, checking the currently equiped equipment through scores.
-
-This Library is meant to be used to implement custom equipment in a very performant way.
-
-## **How it works**
-This Library uses the `/attribute ... get` command to read the players equipment instead of nbt since this command is way lighter then the nbt commands (especially for players).
-The equipment uses the luck attribute in very low amounts since it is only used in the fishing loot table and only changes anything at integer values (1, 2, 3...) but is stored as a double.
+# **mc-tungsten**
+### This library allows for easy and efficient checking for the swapping of equipment and provides the items data in a storage for easy and efficient reading and modifying.
 
 ---
 
-### **"Adding" your own item**
-This Library uses specific UUIDs of the `generic.luck` attribute modifier to identify the different types of equipment.<br>
-When giving the item, set the `Amount` of the attribute modifer to `-0.000000000001` (-1*10<sup>-12</sup>).
+## **How it works**
+This Library uses the `/attribute [...] get` command to read the players equipment instead of nbt.<br>
+The `attribute` command is way more efficient compared to the `data` command (especially for players).
+
+Equipment is identified using the luck attribute in very low amounts since the luck attribute is only used in the fishing loot table and only influences the loot table at integer values (`1`, `2`, `3`...).
+Attributes in minecraft are stored as doubles and when reading them for use in the loot table, everything after the point just gets cut (`4.69` becomes `4`), so values little over `0` are effectively read as `0`.
+
+---
+
+## **"Registring" an Item**
+This library uses specific UUIDs of the `generic.luck` attribute modifier to identify the different types of equipment.<br>
+When creating an item, set the `Amount` of the attribute modifier to `-0.000000000001` (-1*10<sup>-12</sup>).
 
 |Slot|UUID in Hex|UUID in 4 Values|
 |---|---|---|
@@ -24,44 +26,48 @@ When giving the item, set the `Amount` of the attribute modifer to `-0.000000000
 |legs       |`c-0-a455-0-e`|`[I;12,42069,0,14]`|
 |feet       |`c-0-a455-0-f`|`[I;12,42069,0,15]`|
 
-Additionally to that luck modifier you need to add the nbt `swl.id:YOUR_ID` to your item. This is the ID of this item that you can check for using the `@s swl.*` scores of each player. Replace the `YOUR_ID` part with a unique integer of your choosing (kind of like custom model data). This ID is only unique for that slot type, so a whole armor set with a weapon can have the same ID.<br>
-_(`*` can be one of `mainhand/offhand/head/chest/legs/feet`)_
-
-**A give command could look like the following:**
-```js
-give @s ender_eye{swl.id:16,AttributeModifiers:[{AttributeName:"generic.luck",Name:"swl.mainhand",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,10],Slot:"mainhand"},{AttributeName:"generic.luck",Name:"swl.offhand",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,11],Slot:"offhand"}]}
+A give command could look like the following:
+```hs
+give @s ender_eye{AttributeModifiers:[{AttributeName:"generic.luck",Name:"tungsten.mainhand",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,10],Slot:"mainhand"},{AttributeName:"generic.luck",Name:"tungsten.offhand",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,11],Slot:"offhand"}]}
 ```
-This command gives the player an ender eye with an ID of 16, that can be detected in the mainhand and offhand.
+This command gives the player an ender eye, that can be detected in the mainhand and offhand.
 
 ---
 
-## **In- and output**
-(`*` here is one of `mainhand/offhand/head/chest/legs/feet`)
+## **Access from your pack**
 
-|Function tag|Description|
+### **"Register" your Pack**
+The following function tags are executed once for each player, when (and only when) items of this library get equiped, unequiped or swapped.
+
+|Function tag|Executed|
 |---|---|
-|`#swl:swap/mainhand`|Called when swapping to and from a mainhand item from this library|
-|`#swl:swap/offhand`|Called when swapping to and from a offhand item from this library|
-|`#swl:swap/head`|Called when swapping to and from a head item from this library|
-|`#swl:swap/chest`|Called when swapping to and from a chest item from this library|
-|`#swl:swap/legs`|Called when swapping to and from a legs item from this library|
-|`#swl:swap/feet`|Called when swapping to and from a feet item from this library|
+|`#tungsten:swap/mainhand`|when changing a mainhand item|
+|`#tungsten:swap/offhand`|when changing an offhand item|
+|`#tungsten:swap/head`|when changing a head item|
+|`#tungsten:swap/chest`|when changing a chest item|
+|`#tungsten:swap/legs`|when changing a legs item|
+|`#tungsten:swap/feet`|when changing a feet item|
 
-Use these function tags to add/remove effects or attributes of your custom equipment or load arbitrary stats using the variables given below.
+Add a function from your pack to the function tags, that handles the swapping of that type of equipment.
 
-|Value|Type|Description|Availability|
-|---|---|---|---|
-|`@s swl.*`         |score  |The `swl.id` of the item in that Slot|At any time, use this in your own pack|
-|`.prev swl.*`      |score  |The `swl.id` of the item previously in that Slot|Only in `#swl:swap/*`|
-|`ps:swl this`      |storage|All the nbt of the player|Only in `#swl:swap/*`|
-|`ps:swl this.item` |storage|The nbt of the used item|Only in `#swl:swap/*`|
-|`.modified swl`    |score  |If != 0, the item (`ps:swl this.item`) gets given back to the player|Only in `#swl:swap/*`|
+A function tag should look something like this:
 
-If you want to check the equipment each tick in your own data pack you can do that by just checking the `@s swl.*` score.
+> `.../data/tungsten/tags/functions/swap/<type>.json`
+```json
+{
+    "values":[
+        "<namespace>:<swap_handle_function>"
+    ]
+}
+```
+### **Context**
+The context of the function tags are `as` and `at` the player, so the player can be selected using the `@s` selector.
 
-## **Technical Stuff**
-1. Why is the ID not converted into the luck attribute value? Reading that is more performant.
-    - That way I can check the swap between items with the same ID, since 2 different new chestplates could have different armor values / enchantments /...<br>
-Plus this nbt value is only read when actually swapping that specific item so it does not have a big performance impact
+### **Item Data**
+In the storage `tungsten:player` at `Item`, you can access the information of the item that has just been equipped.
 
-2. The `#swl:swap/*` function tags are updated and called in this order `mainhand/offhand/head/chest/legs/feet`.
+### **Modify an Item**
+If you modify the items data inside of the storage and set the `.modified` score of the `tungsten` objective to anything other then `0`, the item in the players inventory will get modified accordingly.
+
+### **Read the Players Inventory**
+The whole inventory of the player can also be read in the storage `tungsten:player` at `Inventory`, this will never modify the players actual inventory and meant to be read only.
