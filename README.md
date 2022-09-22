@@ -38,7 +38,7 @@ This command gives the player an ender eye, that can be detected in the mainhand
 
 ### **Embedding the Library**
 
-This library uses [Lantern Load](https://github.com/LanternMC/load) to ensure that all packs to load in a controllable order. For more information on Lantern Load, check out the README in their repository.
+This library uses [Lantern Load](https://github.com/LanternMC/load) to ensure that all packs load in a controllable order. For more information on Lantern Load, check out the README in their repository.
 
 To quickly set up this pack, copy the `minecraft`, `load` and `tungsten` namespace into your pack and add your `load.mcfunction` file to `.../data/load/tags/functions/load.json`.
 
