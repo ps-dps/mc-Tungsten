@@ -13,7 +13,7 @@ Attributes in minecraft are stored as doubles and when reading them for use in t
 
 ---
 
-## **"Registring" an Item**
+## **"Register" an Item**
 This library uses specific UUIDs of the `generic.luck` attribute modifier to identify the different types of equipment.<br>
 When creating an item, set the `Amount` of the attribute modifier to `-0.000000000001` (-1*10<sup>-12</sup>).
 
@@ -67,7 +67,7 @@ The context of the function tags are `as` and `at` the player, so the player can
 In the storage `tungsten:player` at `Item`, you can access the information of the item that has just been equipped.
 
 ### **Modify an Item**
-If you modify the items data inside of the storage and set the `.modified` score of the `tungsten` objective to anything other then `0`, the item in the players inventory will get modified accordingly.
+If you modify the items data inside of the storage and set the `.modified` score of the `tungsten` objective to anything **other then** `0`, the item in the players inventory will get modified accordingly.
 
 ### **Read the Players Inventory**
-The whole inventory of the player can also be read in the storage `tungsten:player` at `Inventory`, this will never modify the players actual inventory and meant to be read only.
+The whole inventory of the player can also be read in the storage `tungsten:player` at `Inventory`, this will never modify the players actual inventory and is meant to be read only.
