@@ -1,7 +1,4 @@
 
-
-#give @s ender_eye{tungsten:1b,tungsten.id:13,AttributeModifiers:[{AttributeName:"generic.luck",Name:"generic.luck",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,10],Slot:"mainhand"},{AttributeName:"generic.luck",Name:"generic.luck",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,11],Slot:"offhand"},{AttributeName:"generic.luck",Name:"generic.luck",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,12],Slot:"head"},{AttributeName:"generic.luck",Name:"generic.luck",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,13],Slot:"chest"},{AttributeName:"generic.luck",Name:"generic.luck",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,14],Slot:"legs"},{AttributeName:"generic.luck",Name:"generic.luck",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,15],Slot:"feet"}]} 1
-
 give @s ender_eye{AttributeModifiers:[{AttributeName:"generic.luck",Name:"tungsten.mainhand",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,10],Slot:"mainhand"},{AttributeName:"generic.luck",Name:"tungsten.offhand",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,11],Slot:"offhand"}]}
 give @s iron_sword{AttributeModifiers:[{AttributeName:"generic.luck",Name:"tungsten.mainhand",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,10],Slot:"mainhand"}]}
 

@@ -1,5 +1,4 @@
 
-#load
 scoreboard objectives add tungsten dummy
 
 scoreboard objectives add tungsten.uid dummy
@@ -14,6 +13,6 @@ forceload add 420692 694202
 setblock 420692 0 694202 yellow_shulker_box
 setblock 420692 1 694202 bedrock
 
-scoreboard players set silver.weapons.library load.status 1
+scoreboard players set mc-tungsten load.status 1
 
 schedule function tungsten:main 1t
