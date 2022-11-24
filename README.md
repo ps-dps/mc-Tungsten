@@ -58,7 +58,7 @@ Add a function from your pack to the function tags, that handles the swapping of
 
 A function tag should look something like this:
 
-> `.../data/tungsten/tags/functions/swap/<type>.json`
+> `.../data/tungsten/tags/functions/swap/<slot>.json`
 ```json
 {
     "values":[
@@ -77,3 +77,6 @@ If you modify the items data inside of the storage and set the `.modified` score
 
 ### **Read the Players Inventory**
 The whole inventory of the player can also be read in the storage `tungsten:player` at `Inventory`, this will never modify the players actual inventory and is meant to be read only.
+
+---
+<sub>check me out on [Planet Minecraft](https://www.planetminecraft.com/member/puckisilver/)
