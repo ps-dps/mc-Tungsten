@@ -8,6 +8,7 @@ execute if score .new tungsten.uid.chest matches -1 run function tungsten:init/c
 scoreboard players set .has.swapped tungsten 1
 execute if score @s tungsten.uid.chest matches 0 if score .prev tungsten.uid.chest matches 0 run scoreboard players set .has.swapped tungsten 0
 scoreboard players operation @s tungsten.uid.chest = .new tungsten.uid.chest
+execute if score .has.swapped tungsten matches 1 run data remove storage tungsten:player Item
 execute if score .has.swapped tungsten matches 1 run data modify storage tungsten:player Item set from storage tungsten:player Inventory[{Slot:102b}]
 execute if score .has.swapped tungsten matches 1 run data remove storage tungsten:player Item.Slot
 scoreboard players set .modified tungsten 0

@@ -8,6 +8,7 @@ execute if score .new tungsten.uid.mainhand matches -1 run function tungsten:ini
 scoreboard players set .has.swapped tungsten 1
 execute if score @s tungsten.uid.mainhand matches 0 if score .new tungsten.uid.mainhand matches 0 run scoreboard players set .has.swapped tungsten 0
 scoreboard players operation @s tungsten.uid.mainhand = .new tungsten.uid.mainhand
+execute if score .has.swapped tungsten matches 1 run data remove storage tungsten:player Item
 execute if score .has.swapped tungsten matches 1 run data modify storage tungsten:player Item set from entity @s SelectedItem
 scoreboard players set .modified tungsten 0
 execute if score .has.swapped tungsten matches 1 run function #tungsten:swap/mainhand
