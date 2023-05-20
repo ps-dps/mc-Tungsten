@@ -28,7 +28,7 @@ When creating an item, set the `Amount` of the attribute modifier to `-0.0000000
 
 A give command could look like the following:
 ```hs
-give @s ender_eye{AttributeModifiers:[{AttributeName:"generic.luck",Name:"tungsten.mainhand",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,10],Slot:"mainhand"},{AttributeName:"generic.luck",Name:"tungsten.offhand",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,11],Slot:"offhand"}]}
+give @s ender_eye{AttributeModifiers:[{AttributeName:"minecraft:generic.luck",Name:"tungsten.mainhand",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,10],Slot:"mainhand"},{AttributeName:"minecraft:generic.luck",Name:"tungsten.offhand",Amount:-0.000000000001,Operation:0,UUID:[I;12,42069,-0,11],Slot:"offhand"}]}
 ```
 This command gives the player an ender eye, that can be detected in the mainhand and offhand.
 
