@@ -1,11 +1,5 @@
-
-### Load new offhand id
-
-# if not initialized yet, assign uid
 data modify storage tungsten:player Inventory set from entity @s Inventory
 execute if score .new tungsten.uid.offhand matches -1 run function tungsten:init/offhand
-
-# reset
 scoreboard players set .has.swapped tungsten 1
 execute if score @s tungsten.uid.offhand matches 0 if score .new tungsten.uid.offhand matches 0 run scoreboard players set .has.swapped tungsten 0
 scoreboard players operation @s tungsten.uid.offhand = .new tungsten.uid.offhand
