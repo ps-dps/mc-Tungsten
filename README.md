@@ -75,8 +75,5 @@ In the storage `tungsten:player` at `Item`, you can access the information of th
 ### **Modify an Item**
 If you modify the items data inside of the storage and set the `.modified` score of the `tungsten` objective to anything **other then** `0`, the item in the players inventory will get modified accordingly.
 
-### **Read the Players Inventory**
-The whole inventory of the player can also be read in the storage `tungsten:player` at `Inventory`, this will never modify the players actual inventory and is meant to be read only.
-
 ---
 <sub>check me out on [Planet Minecraft](https://www.planetminecraft.com/member/puckisilver/)
