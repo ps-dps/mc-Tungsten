@@ -5,3 +5,4 @@ execute store result score .new tungsten.uid.offhand run attribute @s minecraft:
 scoreboard players operation .new tungsten.uid += .new tungsten.uid.offhand
 # call new function if there is change in the luck attribute
 execute unless score .new tungsten.uid = @s tungsten.uid run function tungsten:tick/check
+execute if score .new tungsten.uid matches 2147483647 run function tungsten:tick/check

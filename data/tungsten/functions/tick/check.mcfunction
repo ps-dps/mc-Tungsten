@@ -4,9 +4,6 @@
 # reset
 scoreboard players operation @s tungsten.uid = .new tungsten.uid
 
-# get all data so the following reads are less intense (at this point i know there is a change)
-data modify storage tungsten:player Inventory set from entity @s Inventory
-
 # check mainhand
 execute store result score .new tungsten.uid.mainhand run attribute @s minecraft:generic.luck modifier value get c-0-a455-0-a 1000000000000.5
 execute unless score .new tungsten.uid.mainhand = @s tungsten.uid.mainhand run function tungsten:swap/mainhand

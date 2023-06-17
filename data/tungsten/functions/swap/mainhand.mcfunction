@@ -2,6 +2,7 @@
 ### Load new mainhand id
 
 # if not initialized yet, assign uid
+data modify storage tungsten:player Inventory set from entity @s Inventory
 execute if score .new tungsten.uid.mainhand matches -1 run function tungsten:init/mainhand
 
 # reset

@@ -2,6 +2,7 @@
 ### Load new feet id
 
 # if not initialized yet, assign uid
+data modify storage tungsten:player Inventory set from entity @s Inventory
 execute if score .new tungsten.uid.feet matches -1 run function tungsten:init/feet
 
 # reset
