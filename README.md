@@ -1,5 +1,4 @@
-
-# **mc-tungsten**
+# Tungsten
 **This library allows for easy and highly efficient checking for the swapping of equipment**
 
 ## **Register an Item**
@@ -61,9 +60,9 @@ A function tag could look something like this:
 The functions in the tag are executed `as` and `at` the player, so the player can be selected using the `@s` selector.
 
 > [!Note]
-> Previously you could access and modify nbt of the swapped in item through a provided storage, this is no longer possible.
-> Use a predicate to detect if the item is of your pack and then read the nbt you need to access.
-> If this is something you rely on, please let me know of your usecase by opening an [issue](https://github.com/PuckiSilver/mc-tungsten/issues).
+> _Previously you could access and modify nbt of the swapped in item through a provided **storage**, this is **no longer possible**._
+> _Use a predicate to **detect if the item is of your pack** and then read the nbt you need to access._
+> _If this is something you **relied on**, please let me know of your **usecase** by opening an [issue](https://github.com/PuckiSilver/mc-tungsten/issues)._
 
 ## **Embedding the Library**
 
