@@ -1,8 +1,6 @@
 
 # **mc-tungsten**
-### This library allows for easy and efficient checking for the swapping of equipment and provides the items components in a storage for easy and efficient reading.
-
----
+**This library allows for easy and highly efficient checking for the swapping of equipment**
 
 ## **Register an Item**
 Simply apply the modifier `tungsten:apply/<slot>` to the item for each slot tungsten should react to.
@@ -11,8 +9,6 @@ This can be done using the `item` command or in a loot table as a `minecraft:ref
 ```mcfunction
 item modify entity @s <...> tungsten:apply/<slot>
 ```
-
----
 
 If you want to give a tungsten-ready item as a **crafting reward** or somewhere, where you can't use item modifiers, you can add the following component:
 
@@ -64,9 +60,10 @@ A function tag could look something like this:
 
 The functions in the tag are executed `as` and `at` the player, so the player can be selected using the `@s` selector.
 
-In the storage `tungsten:item` at `components`, you can read the components of the item that was just equipped.
-
-_The ability to modify the item using tungsten was removed - if this is something you rely on, please let me know of your usecase by opening an [issue](https://github.com/PuckiSilver/mc-tungsten/issues)._
+> [!Note]
+> Previously you could access and modify nbt of the swapped in item through a provided storage, this is no longer possible.
+> Use a predicate to detect if the item is of your pack and then read the nbt you need to access.
+> If this is something you rely on, please let me know of your usecase by opening an [issue](https://github.com/PuckiSilver/mc-tungsten/issues).
 
 ## **Embedding the Library**
 
