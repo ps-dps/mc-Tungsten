@@ -8,6 +8,9 @@ This can be done using the `item` command or in a loot table as a `minecraft:ref
 ```mcfunction
 item modify entity @s <...> tungsten:apply/<slot>
 ```
+```json
+{ "function": "minecraft:reference", "name": "tungsten:apply/<slot>" }
+```
 
 If you want to give a tungsten-ready item as a **crafting reward** or somewhere, where you can't use item modifiers, you can add the following component:
 
