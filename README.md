@@ -16,7 +16,7 @@ If you want to give a tungsten-ready item as a **crafting reward** or somewhere,
 
 ```json
 "minecraft:attribute_modifiers": [{
-    "attribute": "minecraft:luck",
+    "type": "minecraft:luck",
     "id": "tungsten:<slot>",
     "amount": -9.094947017729282e-13,
     "operation": "add_value",
