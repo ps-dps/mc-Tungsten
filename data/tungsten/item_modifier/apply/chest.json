@@ -3,12 +3,11 @@
         "function": "minecraft:set_attributes",
         "modifiers": [
             {
-                "attribute": "minecraft:generic.luck",
-                "name": "tungsten.feet",
+                "attribute": "minecraft:luck",
+                "id": "tungsten:chest",
                 "amount": -9.094947017729282e-13,
                 "operation": "add_value",
-                "id": "c-0-a455-0-f",
-                "slot": "feet"
+                "slot": "chest"
             }
         ],
         "replace": false
